@@ -1,24 +1,39 @@
 import databaseService from "./databaseService";
-import { ID } from "react-native-appwrite";
+import { ID, Query } from "react-native-appwrite";
 
 const dbId = process.env.EXPO_PUBLIC_APPWRITE_DB_ID;
 const collectionId = process.env.EXPO_PUBLIC_APPWRITE_NOTES_COLLECTION_ID;
 
 const noteService = {
   //get notes
-  async getNotes() {
-    const response = await databaseService.listDocuments(dbId, collectionId);
-    if (response.error) {
-      return { error: response.error };
+  async getNotes(userId) {
+    if (!userId) {
+      console.error("User id is required");
+      return {
+        error: "User id is required",
+        data: [],
+      };
     }
-    return { data: response.data };
+    try {
+      const response = await databaseService.listDocuments(dbId, collectionId, [
+        Query.equal("user_id", userId),
+      ]);
+      return response;
+    } catch (error) {
+      console.error("Error fetching notes", error.message);
+      return {
+        error: error.message,
+        data: [],
+      };
+    }
   },
   //add new note
-  async addNote(title) {
+  async addNote(user_id, title) {
     if (!title) {
       return { error: "Title is required" };
     }
     const data = {
+      user_id,
       text: title,
       createdAt: new Date().toISOString(),
     };

@@ -17,7 +17,10 @@ const authService = {
   //Login user
   async loginUser(email, password) {
     try {
-      const response = await account.createEmailSession(email, password);
+      const response = await account.createEmailPasswordSession(
+        email,
+        password
+      );
       return response;
     } catch (error) {
       return {
