@@ -4,7 +4,7 @@
     "slug": "keep-notes",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/todo-app-logo.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -13,22 +13,22 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/todo-app-logo.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.sangib.android.noteapp"
+      "package": "com.sangib.android.noteapp.keepnotes"
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/todo-app-logo.png"
     },
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+          "image": "./assets/images/todo-app-logo.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
@@ -43,7 +43,7 @@
         "origin": false
       },
       "eas": {
-        "projectId": "4bbf9775-e942-4663-a80a-afc1b15c9b61"
+        "projectId": "7c855e1c-406c-4e9e-a08b-a621c3d21948"
       }
     },
     "owner": "sangib58"
